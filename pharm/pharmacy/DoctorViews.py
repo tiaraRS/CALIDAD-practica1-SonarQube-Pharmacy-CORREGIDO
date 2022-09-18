@@ -2,11 +2,15 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.contrib.auth.forms import  UserCreationForm
+from django.template import RequestContext, Template, loader
+from django.http import HttpResponse
 from .decorators import *
+from .decorators import require_GET
 
 from .forms import *
 from .models import *
 
+@require_GET
 def doctorHome(request): 
     prescip = Prescription.objects.all().count()
 
@@ -14,7 +18,8 @@ def doctorHome(request):
         "Prescription_total":prescip
 
     }
-    return render(request,'doctor_templates/doctor_home.html',context)
+    content = loader.render_to_string('doctor_templates/doctor_home.html', context, request)
+    return HttpResponse(content)
 
 def doctorProfile(request):
     customuser=CustomUser.objects.get(id=request.user.id)

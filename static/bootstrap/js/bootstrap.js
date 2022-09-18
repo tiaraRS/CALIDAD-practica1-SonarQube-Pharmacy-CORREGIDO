@@ -145,10 +145,10 @@
 
   var Util = {
     TRANSITION_END: 'bsTransitionEnd',
-    getUID: function getUID(prefix) {
+    getUID: function getUID(prefix) {      
       do {
         // eslint-disable-next-line no-bitwise
-        prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
+        prefix += ~~(crypto.getRandomValues(100)/100 * MAX_UID); // "~~" acts like a faster Math.floor() here
       } while (document.getElementById(prefix));
 
       return prefix;
