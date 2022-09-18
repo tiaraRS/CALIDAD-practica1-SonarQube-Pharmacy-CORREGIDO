@@ -10,7 +10,6 @@ from .decorators import require_GET
 from .forms import *
 from .models import *
 
-@require_GET
 def doctorHome(request): 
     prescip = Prescription.objects.all().count()
 
@@ -18,8 +17,7 @@ def doctorHome(request):
         "Prescription_total":prescip
 
     }
-    content = loader.render_to_string('doctor_templates/doctor_home.html', context, request)
-    return HttpResponse(content)
+    return render(request,'doctor_templates/doctor_home.html',context)
 
 def doctorProfile(request):
     customuser=CustomUser.objects.get(id=request.user.id)
