@@ -20,16 +20,7 @@ class LoginCheckMiddleWare(MiddlewareMixin):
 
         if user.is_authenticated:
             if user.user_type == "1":
-                
-                if modulename == "pharmacy.HODViews": 
-                    pass
-                elif modulename == "":
-                    pass
-                elif modulename == "pharmacy.views" or modulename == "django.views.static":
-                    pass
-                else:
-                    pass
-            
+                pass            
             elif user.user_type == "2":
                 if modulename == "pharmacy.pharmacistViews":
                     pass
