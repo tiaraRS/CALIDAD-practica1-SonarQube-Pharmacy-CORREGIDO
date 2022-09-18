@@ -1,6 +1,6 @@
-projectKey=0http1
+projectKey=cali2
 serverUrl=http://localhost:9000
 serverVersion=9.6.1.59531
-dashboardUrl=http://localhost:9000/dashboard?id=0http1
-ceTaskId=AYNQ42JIUVLRqNZSBzsY
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYNQ42JIUVLRqNZSBzsY
+dashboardUrl=http://localhost:9000/dashboard?id=cali2
+ceTaskId=AYNR350ZUVLRqNZSBzsl
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYNR350ZUVLRqNZSBzsl
