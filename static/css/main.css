@@ -1026,7 +1026,7 @@ input::placeholder {
     overflow: auto;
 }
 
-how .swal2-success-line-tip {
+.swal2-success-line-tip {
     -webkit-animation: swal2-animate-success-line-tip .75s;
     animation: swal2-animate-success-line-tip .75s;
 }
