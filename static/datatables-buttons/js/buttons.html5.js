@@ -1166,38 +1166,38 @@ DataTable.ext.buttons.excelHtml5 = {
 		// Title and top messages
 		var exportInfo = dt.buttons.exportInfo( config );
 		if ( exportInfo.title ) {
-			addRow( [exportInfo.title], rowPos );
+			addRow( [exportInfo.title] );
 			mergeCells( rowPos, data.header.length-1 );
 		}
 
 		if ( exportInfo.messageTop ) {
-			addRow( [exportInfo.messageTop], rowPos );
+			addRow( [exportInfo.messageTop] );
 			mergeCells( rowPos, data.header.length-1 );
 		}
 
 
 		// Table itself
 		if ( config.header ) {
-			addRow( data.header, rowPos );
+			addRow( data.header );
 			$('row:last c', rels).attr( 's', '2' ); // bold
 		}
 	
 		dataStartRow = rowPos;
 
 		for ( var n=0, ie=data.body.length ; n<ie ; n++ ) {
-			addRow( data.body[n], rowPos );
+			addRow( data.body[n] );
 		}
 	
 		dataEndRow = rowPos;
 
 		if ( config.footer && data.footer ) {
-			addRow( data.footer, rowPos);
+			addRow( data.footer );
 			$('row:last c', rels).attr( 's', '2' ); // bold
 		}
 
 		// Below the table
 		if ( exportInfo.messageBottom ) {
-			addRow( [exportInfo.messageBottom], rowPos );
+			addRow( [exportInfo.messageBottom] );
 			mergeCells( rowPos, data.header.length-1 );
 		}
 
