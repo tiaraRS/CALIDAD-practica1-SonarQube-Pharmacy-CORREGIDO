@@ -29,7 +29,6 @@
 }
 
 .pace .pace-progress {
-  position: fixed;
   z-index: 2000;
   display: block;
   position: absolute;

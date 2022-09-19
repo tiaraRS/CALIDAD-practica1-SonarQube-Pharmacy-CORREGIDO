@@ -23,7 +23,6 @@
 }
 
 .pace .pace-activity {
-  position: fixed;
   z-index: 2000;
   display: block;
   position: absolute;
@@ -31,7 +30,6 @@
   top: -30px;
   height: 90px;
   width: 90px;
-  display: block;
   border-width: 30px;
   border-style: double;
   border-color: #000000 transparent transparent;

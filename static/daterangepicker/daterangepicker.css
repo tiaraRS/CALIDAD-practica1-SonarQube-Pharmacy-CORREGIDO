@@ -12,7 +12,7 @@
   left: 20px;
   z-index: 3001;
   display: none;
-  font-family: arial;
+  font-family: arial, serif;
   font-size: 15px;
   line-height: 1em;
 }
@@ -145,7 +145,6 @@
 }
 
 .daterangepicker .calendar-table th, .daterangepicker .calendar-table td {
-  white-space: nowrap;
   text-align: center;
   vertical-align: middle;
   min-width: 32px;

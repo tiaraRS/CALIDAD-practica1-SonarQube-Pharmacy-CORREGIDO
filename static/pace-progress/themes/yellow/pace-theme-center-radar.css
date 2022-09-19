@@ -23,9 +23,7 @@
 }
 
 .pace .pace-activity {
-  position: fixed;
   z-index: 2000;
-  display: block;
   position: absolute;
   left: -30px;
   top: -30px;

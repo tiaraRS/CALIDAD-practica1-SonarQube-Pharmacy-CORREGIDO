@@ -82,6 +82,6 @@
   100% { -ms-transform: translate(-28px, 0); transform: translate(-28px, 0); }
 }
 @keyframes pace-theme-mac-osx-motion {
-  0% { transform: none; transform: none; }
-  100% { transform: translate(-28px, 0); transform: translate(-28px, 0); }
+  0% { transform: none; }
+  100% { transform: translate(-28px, 0); }
 }
