@@ -1455,18 +1455,6 @@ $(document).on( 'preInit.dt.dtr', function (e, settings, json) {
 	if ( e.namespace !== 'dt' ) {
 		return;
 	}
-
-	if ( $(settings.nTable).hasClass( 'responsive' ) ||
-		 $(settings.nTable).hasClass( 'dt-responsive' ) ||
-		 settings.oInit.responsive ||
-		 DataTable.defaults.responsive
-	) {
-		var init = settings.oInit.responsive;
-
-		if ( init !== false ) {
-			new Responsive( settings, $.isPlainObject( init ) ? init : {}  );
-		}
-	}
 } );
 
 
