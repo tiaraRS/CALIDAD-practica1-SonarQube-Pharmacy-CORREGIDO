@@ -4,10 +4,11 @@ from django.contrib import messages
 from django.contrib.auth.forms import  UserCreationForm
 from django.template import RequestContext, Template, loader
 from django.http import HttpResponse
-from .decorators import *
+from .decorators import unautheticated_user
 from .decorators import require_GET
 
-from .forms import *
+from .forms import PrescriptionForm
+from .forms import DoctorForm
 from .models import *
 
 def doctorHome(request): 
