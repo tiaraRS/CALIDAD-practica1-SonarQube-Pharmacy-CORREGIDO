@@ -2843,7 +2843,7 @@ $.ui.plugin.add( "draggable", "connectToSortable", {
 					this.helperProportions = draggable.helperProportions;
 					this.offset.click = draggable.offset.click;
 
-					if ( this !== sortable &&
+					if ( this != sortable &&
 							this._intersectsWith( this.containerCache ) &&
 							$.contains( sortable.element[ 0 ], this.element[ 0 ] ) ) {
 						innermostIntersecting = false;
@@ -9264,7 +9264,7 @@ $.widget( "ui.button", {
 	},
 
 	_create: function() {
-		if ( !this.option.showLabel & !this.options.icon ) {
+		if ( !this.option.showLabel && !this.options.icon ) {
 			this.options.showLabel = true;
 		}
 
@@ -16168,7 +16168,7 @@ $.effects = {
  *
  * Date: Wed Jan 16 08:47:09 2013 -0600
  */
-( function( jQuery, undefined ) {
+( function( jQuery, undef ) {
 
 	var stepHooks = "backgroundColor borderBottomColor borderLeftColor borderRightColor " +
 		"borderTopColor color columnRuleColor outlineColor textDecorationColor textEmphasisColor",
@@ -16379,13 +16379,13 @@ function stringParse( string ) {
 
 color.fn = jQuery.extend( color.prototype, {
 	parse: function( red, green, blue, alpha ) {
-		if ( red === undefined ) {
+		if ( red === undef ) {
 			this._rgba = [ null, null, null, null ];
 			return this;
 		}
 		if ( red.jquery || red.nodeType ) {
 			red = jQuery( red ).css( green );
-			green = undefined;
+			green = undef;
 		}
 
 		var inst = this,
@@ -16393,7 +16393,7 @@ color.fn = jQuery.extend( color.prototype, {
 			rgba = this._rgba = [];
 
 		// More than 1 argument specified - assume ( red, green, blue, alpha )
-		if ( green !== undefined ) {
+		if ( green !== undef ) {
 			red = [ red, green, blue, alpha ];
 			type = "array";
 		}
@@ -16674,7 +16674,7 @@ each( spaces, function( spaceName, space ) {
 		if ( to && !this[ cache ] ) {
 			this[ cache ] = to( this._rgba );
 		}
-		if ( value === undefined ) {
+		if ( value === undef ) {
 			return this[ cache ].slice();
 		}
 
