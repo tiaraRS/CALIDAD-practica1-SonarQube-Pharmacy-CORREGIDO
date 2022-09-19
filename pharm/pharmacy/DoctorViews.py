@@ -9,7 +9,13 @@ from .decorators import require_GET
 
 from .forms import PrescriptionForm
 from .forms import DoctorForm
-from .models import *
+
+from .models import CustomUser
+from .models import Patients
+from .models import Doctor
+from .models import Prescription
+
+
 
 def doctorHome(request): 
     prescip = Prescription.objects.all().count()
