@@ -35,7 +35,7 @@
 		// Browser
 		factory( jQuery, window, document );
 	}
-}(function( $, window, document, undefined ) {
+}(function( $, window, document, undefinedVariable ) {
 'use strict';
 var DataTable = $.fn.dataTable;
 
@@ -449,7 +449,7 @@ ZeroClipboard_TableTools.hasFlash = function ()
 	catch (e) {
 		if (
 			navigator.mimeTypes &&
-			navigator.mimeTypes['application/x-shockwave-flash'] !== undefined &&
+			navigator.mimeTypes['application/x-shockwave-flash'] !== undefinedVariable &&
 			navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin
 		) {
 			return true;
@@ -558,7 +558,7 @@ var _exportData = function ( dt, config )
 	var boundary = config.fieldBoundary;
 	var separator = config.fieldSeparator;
 	var reBoundary = new RegExp( boundary, 'g' );
-	var escapeChar = config.escapeChar !== undefined ?
+	var escapeChar = config.escapeChar !== undefinedVariable ?
 		config.escapeChar :
 		'\\';
 	var join = function ( a ) {
@@ -686,7 +686,7 @@ function _createNode( doc, nodeName, opts ){
 			} );
 		}
 
-		if ( opts.text !== null && opts.text !== undefined ) {
+		if ( opts.text !== null && opts.text !== undefinedVariable ) {
 			tempNode.appendChild( doc.createTextNode( opts.text ) );
 		}
 	}
@@ -710,7 +710,7 @@ function _excelColWidth( data, col ) {
 
 	for ( var i=0, ien=data.body.length ; i<ien ; i++ ) {
 		var point = data.body[i][col];
-		str = point !== null && point !== undefined ?
+		str = point !== null && point !== undefinedVariable ?
 			point.toString() :
 			'';
 
@@ -763,7 +763,7 @@ function _excelColWidth( data, col ) {
  * @param  {object} obj XLSX document object
  */
 function _xlsxToStrings( obj ) {
-	if ( _ieExcel === undefined ) {
+	if ( _ieExcel === undefinedVariable ) {
 		// Detect if we are dealing with IE's _awful_ serialiser by seeing if it
 		// drop attributes
 		_ieExcel = _serialiser
@@ -1086,7 +1086,7 @@ DataTable.Buttons.swfPath = '//cdn.datatables.net/buttons/'+DataTable.Buttons.ve
 // of zero height and width if initialised hidden
 DataTable.Api.register( 'buttons.resize()', function () {
 	$.each( ZeroClipboard_TableTools.clients, function ( i, client ) {
-		if ( client.domElement !== undefined && client.domElement.parentNode ) {
+		if ( client.domElement !== undefinedVariable && client.domElement.parentNode ) {
 			client.positionElement();
 		}
 	} );
@@ -1226,7 +1226,7 @@ DataTable.ext.buttons.excelFlash = $.extend( {}, flashButton, {
 				var cell = null;
 
 				// For null, undefined of blank cell, continue so it doesn't create the _createNode
-				if ( row[i] === null || row[i] === undefined || row[i] === '' ) {
+				if ( row[i] === null || row[i] === undefinedVariable || row[i] === '' ) {
 					if ( config.createEmptyCells === true ) {
 						row[i] = '';
 					}

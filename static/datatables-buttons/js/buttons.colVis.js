@@ -32,7 +32,7 @@
 		// Browser
 		factory( jQuery, window, document );
 	}
-}(function( $, window, document, undefined ) {
+}(function( $, window, document, undefinedVarible ) {
 'use strict';
 var DataTable = $.fn.dataTable;
 
@@ -92,7 +92,7 @@ $.extend( DataTable.ext.buttons, {
 
 	// Single button to set column visibility
 	columnVisibility: {
-		columns: undefined, // column selector
+		columns: undefinedVarible, // column selector
 		text: function ( dt, button, conf ) {
 			return conf._columnText( dt, conf );
 		},
@@ -101,7 +101,7 @@ $.extend( DataTable.ext.buttons, {
 			var col = dt.columns( conf.columns );
 			var curr = col.visible();
 
-			col.visible( conf.visibility !== undefined ?
+			col.visible( conf.visibility !== undefinedVarible ?
 				conf.visibility :
 				! (curr.length ? curr[0] : false )
 			);

@@ -2,5 +2,5 @@ projectKey=practica1-pharmacy-corregido
 serverUrl=http://localhost:9000
 serverVersion=9.4.0.54424
 dashboardUrl=http://localhost:9000/dashboard?id=practica1-pharmacy-corregido
-ceTaskId=AYNT8gBLgZPHhnuWbYPv
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYNT8gBLgZPHhnuWbYPv
+ceTaskId=AYNUIhX7gZPHhnuWbYPw
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYNUIhX7gZPHhnuWbYPw

@@ -35,7 +35,7 @@
 		// Browser
 		factory( jQuery, window, document );
 	}
-}(function( $, window, document, jszip, pdfmake, undefined ) {
+}(function( $, window, document, jszip, pdfmake, undefinedVariable ) {
 'use strict';
 var DataTable = $.fn.dataTable;
 
@@ -151,7 +151,7 @@ var _saveAs = (function(view) {
 							var url = is_chrome_ios ? reader.result : reader.result.replace(/^data:[^;]*;/, 'data:attachment/file;');
 							var popup = view.open(url, '_blank');
 							if(!popup) view.location.href = url;
-							url=undefined; // release reference before dispatching
+							url=undefinedVariable; // release reference before dispatching
 							filesaver.readyState = filesaver.DONE;
 							dispatch_all();
 						};
@@ -288,7 +288,7 @@ var _exportData = function ( dt, config )
 	var boundary = config.fieldBoundary;
 	var separator = config.fieldSeparator;
 	var reBoundary = new RegExp( boundary, 'g' );
-	var escapeChar = config.escapeChar !== undefined ?
+	var escapeChar = config.escapeChar !== undefinedVariable ?
 		config.escapeChar :
 		'\\';
 	var join = function ( a ) {
@@ -381,7 +381,7 @@ catch (t) {}
  * @param {object} obj Object to add (recursive)
  */
 function _addToZip( zip, obj ) {
-	if ( _ieExcel === undefined ) {
+	if ( _ieExcel === undefinedVariable ) {
 		// Detect if we are dealing with IE's _awful_ serialiser by seeing if it
 		// drop attributes
 		_ieExcel = _serialiser
@@ -474,7 +474,7 @@ function _createNode( doc, nodeName, opts ) {
 			} );
 		}
 
-		if ( opts.text !== null && opts.text !== undefined ) {
+		if ( opts.text !== null && opts.text !== undefinedVariable ) {
 			tempNode.appendChild( doc.createTextNode( opts.text ) );
 		}
 	}
@@ -498,7 +498,7 @@ function _excelColWidth( data, col ) {
 
 	for ( var i=0, ien=data.body.length ; i<ien ; i++ ) {
 		var point = data.body[i][col];
-		str = point !== null && point !== undefined ?
+		str = point !== null && point !== undefinedVariable ?
 			point.toString() :
 			'';
 
@@ -929,7 +929,7 @@ DataTable.ext.buttons.csvHtml5 = {
 	className: 'buttons-csv buttons-html5',
 
 	available: function () {
-		return window.FileReader !== undefined && window.Blob;
+		return window.FileReader !== undefinedVariable && window.Blob;
 	},
 
 	text: function ( dt ) {
@@ -1000,7 +1000,7 @@ DataTable.ext.buttons.excelHtml5 = {
 	className: 'buttons-excel buttons-html5',
 
 	available: function () {
-		return window.FileReader !== undefined && _jsZip() !== undefined && ! _isDuffSafari() && _serialiser;
+		return window.FileReader !== undefinedVariable && _jsZip() !== undefinedVariable && ! _isDuffSafari() && _serialiser;
 	},
 
 	text: function ( dt ) {
@@ -1052,8 +1052,8 @@ DataTable.ext.buttons.excelHtml5 = {
 				var cellId = createCellPos(i) + '' + currentRow;
 				var cell = null;
 
-				// For null, undefined of blank cell, continue so it doesn't create the _createNode
-				if ( row[i] === null || row[i] === undefined || row[i] === '' ) {
+				// For null, undefinedVariable of blank cell, continue so it doesn't create the _createNode
+				if ( row[i] === null || row[i] === undefinedVariable || row[i] === '' ) {
 					if ( config.createEmptyCells === true ) {
 						row[i] = '';
 					}
@@ -1307,7 +1307,7 @@ DataTable.ext.buttons.pdfHtml5 = {
 	className: 'buttons-pdf buttons-html5',
 
 	available: function () {
-		return window.FileReader !== undefined && _pdfMake();
+		return window.FileReader !== undefinedVariable && _pdfMake();
 	},
 
 	text: function ( dt ) {
@@ -1333,7 +1333,7 @@ DataTable.ext.buttons.pdfHtml5 = {
 
 		for ( var i=0, ien=data.body.length ; i<ien ; i++ ) {
 			rows.push( $.map( data.body[i], function ( d ) {
-				if ( d === null || d === undefined ) {
+				if ( d === null || d === undefinedVariable ) {
 					d = '';
 				}
 				return {
