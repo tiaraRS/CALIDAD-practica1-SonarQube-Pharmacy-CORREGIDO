@@ -1,7 +1,9 @@
-from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate,login,logout
+import re
+import requests.exceptions
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.forms import  UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.template import RequestContext, Template, loader
 from django.http import HttpResponse
 from .decorators import unautheticated_user
@@ -16,147 +18,171 @@ from .models import Doctor
 from .models import Prescription
 
 
-
-def doctorHome(request): 
+def doctorHome(request):
     prescip = Prescription.objects.all().count()
 
-    context={
-        "Prescription_total":prescip
+    context = {
+        "Prescription_total": prescip
 
     }
-    return render(request,'doctor_templates/doctor_home.html',context)
+    return render(request, 'doctor_templates/doctor_home.html', context)
+
 
 def doctorProfile(request):
-    customuser=CustomUser.objects.get(id=request.user.id)
-    staff=Doctor.objects.get(admin=customuser.id)
+    customuser = CustomUser.objects.get(id=request.user.id)
+    staff = Doctor.objects.get(admin=customuser.id)
 
-    form=DoctorForm()
+    form = DoctorForm()
     if request.method == 'POST':
-        first_name=request.POST.get('first_name')
-        last_name=request.POST.get('last_name')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
 
-
-        customuser=CustomUser.objects.get(id=request.user.id)
-        customuser.first_name=first_name
-        customuser.last_name=last_name
+        customuser = CustomUser.objects.get(id=request.user.id)
+        customuser.first_name = first_name
+        customuser.last_name = last_name
         customuser.save()
 
-        staff=Doctor.objects.get(admin=customuser.id)
-        form =DoctorForm(request.POST,request.FILES,instance=staff)
+        staff = Doctor.objects.get(admin=customuser.id)
+        form = DoctorForm(request.POST, request.FILES, instance=staff)
 
         staff.save()
 
         if form.is_valid():
             form.save()
 
-    context={
-        "form":form,
-        "staff":staff,
-        "user":customuser
+    context = {
+        "form": form,
+        "staff": staff,
+        "user": customuser
     }
 
-    return render(request,'doctor_templates/doctor_profile.html',context)
+    return render(request, 'doctor_templates/doctor_profile.html', context)
+
 
 def managePatients(request):
-    patients=Patients.objects.all()
+    patients = Patients.objects.all()
 
-    context={
-        "patients":patients,
+    context = {
+        "patients": patients,
 
     }
-    return render(request,'doctor_templates/manage_patients.html',context)
+    return render(request, 'doctor_templates/manage_patients.html', context)
 
-def addPrescription(request,pk):        
-    patient=Patients.objects.get(id=pk)
-    form=PrescriptionForm(initial={'patient_id':patient})
+
+def addPrescription(request, pk):
+    patient = Patients.objects.get(id=pk)
+    form = PrescriptionForm(initial={'patient_id': patient})
     if request.method == 'POST':
         try:
-            form=PrescriptionForm(request.POST or None)
+            form = PrescriptionForm(request.POST or None)
             if form.is_valid():
                 form.save()
-                messages.success(request,'Prescription added successfully')
+                messages.success(request, 'Prescription added successfully')
                 return redirect('manage_precrip_doctor')
-        except:
-            messages.error(request,'Prescription Not Added')
+        except requests.exceptions.ConnectTimeout:
+            messages.error(request, 'Timeout')
+            return redirect('manage_patient-doctor')
+        except requests.exceptions.ConnectionError:
+            messages.error(request, 'Connection Error, prescription not added')
+            return redirect('manage_patient-doctor')
+        except requests.exceptions.HTTPError:
+            messages.error(request, 'HTTP Error, Prescription Not Added')
+            return redirect('manage_patient-doctor')
+        except requests.exceptions.MissingSchema:
+            messages.error(
+                request, 'Service unavailable, Prescription Not Added')
             return redirect('manage_patient-doctor')
 
-
- 
-    
-    context={
-        "form":form
+    context = {
+        "form": form
     }
-    return render(request,'doctor_templates/prescribe_form.html',context)
+    return render(request, 'doctor_templates/prescribe_form.html', context)
 
-def patient_personalDetails(request,pk):
-    patient=Patients.objects.get(id=pk)
-    prescrip=patient.prescription_set.all()
 
-    context={
-        "patient":patient,
-        "prescription":prescrip
+def patient_personalDetails(request, pk):
+    patient = Patients.objects.get(id=pk)
+    prescrip = patient.prescription_set.all()
+
+    context = {
+        "patient": patient,
+        "prescription": prescrip
 
     }
-    return render(request,'doctor_templates/patient_personalRecords.html',context)
+    return render(request, 'doctor_templates/patient_personalRecords.html', context)
 
-def deletePrescription(request,pk):
-    prescribe=Prescription.objects.get(id=pk)
+
+def deletePrescription(request, pk):
+    prescribe = Prescription.objects.get(id=pk)
 
     if request.method == 'POST':
         try:
             prescribe.delete()
-            messages.success(request,'Prescription Deleted successfully')
+            messages.success(request, 'Prescription Deleted successfully')
             return redirect('manage_precrip_doctor')
-        except:
-            messages.error(request,'Prescription Not Deleted successfully')
+        except requests.exceptions.ConnectTimeout:
+            messages.error(request, 'Timeout')
             return redirect('manage_precrip_doctor')
-
-
-
-
-    context={
-        "patient":prescribe
+        except requests.exceptions.ConnectionError:
+            messages.error(
+                request, 'Connection Error, Prescription Not Deleted')
+            return redirect('manage_precrip_doctor')
+        except requests.exceptions.HTTPError:
+            messages.error(request, 'HTTP Error, Prescription Not Deleted')
+            return redirect('manage_precrip_doctor')
+        except requests.exceptions.MissingSchema:
+            messages.error(
+                request, 'Service unavailable, Prescription Not Deleted')
+            return redirect('manage_precrip_doctor')
+    context = {
+        "patient": prescribe
     }
 
-    return render(request,'doctor_templates/sure_delete.html',context)
-    
+    return render(request, 'doctor_templates/sure_delete.html', context)
+
+
 def managePrescription(request):
-    precrip=Prescription.objects.all()
+    precrip = Prescription.objects.all()
 
     patient = Patients.objects.all()
-    
-       
-    context={
-        "prescrips":precrip,
-        "patient":patient
+
+    context = {
+        "prescrips": precrip,
+        "patient": patient
     }
-    return render(request,'doctor_templates/manage_prescription.html' ,context)
+    return render(request, 'doctor_templates/manage_prescription.html', context)
 
-def editPrescription(request,pk):
-    prescribe=Prescription.objects.get(id=pk)
-    form=PrescriptionForm(instance=prescribe)
 
-    
+def editPrescription(request, pk):
+    prescribe = Prescription.objects.get(id=pk)
+    form = PrescriptionForm(instance=prescribe)
+
     if request.method == 'POST':
-        form=PrescriptionForm(request.POST ,instance=prescribe)
+        form = PrescriptionForm(request.POST, instance=prescribe)
 
         try:
             if form.is_valid():
                 form.save()
 
-                messages.success(request,'Prescription Updated successfully')
+                messages.success(request, 'Prescription Updated successfully')
                 return redirect('manage_precrip_doctor')
-        except:
-            messages.error(request,' Error!! Prescription Not Updated')
+        except requests.exceptions.ConnectTimeout:
+            messages.error(request, 'Timeout')
+            return redirect('manage_precrip_doctor')
+        except requests.exceptions.ConnectionError:
+            messages.error(
+                request, 'Connection Error, Prescription Not Updated')
+            return redirect('manage_precrip_doctor')
+        except requests.exceptions.HTTPError:
+            messages.error(request, 'HTTP Error, Prescription Not Updated')
+            return redirect('manage_precrip_doctor')
+        except requests.exceptions.MissingSchema:
+            messages.error(
+                request, 'Service unavailable, Prescription Not Updated')
             return redirect('manage_precrip_doctor')
 
-
-
-
-    context={
-        "patient":prescribe,
-        "form":form
+    context = {
+        "patient": prescribe,
+        "form": form
     }
 
-    return render(request,'doctor_templates/edit_prescription.html',context)
-    
+    return render(request, 'doctor_templates/edit_prescription.html', context)

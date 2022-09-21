@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import *
 from .models import *
-
+import requests.exceptions
 
 @login_required
 def patientHome(request):
@@ -113,8 +113,19 @@ def Patientdeletefeedback(request,pk):
             messages.success(request, "Feedback  deleted successfully")
             return redirect('patient_feedback')
 
-    except:
-        messages.error(request, "Feedback Error, Please Check again")
+    except requests.exceptions.ConnectTimeout:
+        messages.error(request, 'Timeout, Failed to Delete Feedback')
+        return redirect('patient_feedback')
+    except requests.exceptions.ConnectionError:
+        messages.error(
+            request, 'Connection Error, Failed to Delete Feedback')
+        return redirect('patient_feedback')
+    except requests.exceptions.HTTPError:
+        messages.error(request, 'HTTP Error, Failed to Delete Feedback')
+        return redirect('patient_feedback')
+    except requests.exceptions.MissingSchema:
+        messages.error(
+            request, 'Service unavailable, Failed to Delete Feedback')
         return redirect('patient_feedback')
 
 
