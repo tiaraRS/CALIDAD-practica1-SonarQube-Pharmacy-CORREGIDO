@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate,login,logout
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .decorators import *
 from django.contrib.auth.decorators import login_required
@@ -8,88 +8,85 @@ from .forms import *
 from .models import *
 import requests.exceptions
 
+
 @login_required
-def patientHome(request):
+def patient_home(request):
     patient_obj = Patients.objects.get(admin=request.user.id)
 
-    patient_dispen=patient_obj.dispense_set.all().count()
-    context={
-          "total_disp":patient_dispen
+    patient_dispen = patient_obj.dispense_set.all().count()
+    context = {
+        "total_disp": patient_dispen
     }
-    return render(request,'patient_templates/patient_home.html',context)
+    return render(request, 'patient_templates/patient_home.html', context)
+
 
 @login_required
-def patientProfile(request):
+def patient_profile(request):
     customuser = CustomUser.objects.get(id=request.user.id)
     patien = Patients.objects.get(admin=customuser.id)
-   
-    form=PatientPicForm1()
+
+    form = PatientPicForm1()
     if request.method == "POST":
-       
 
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
         address = request.POST.get('address')
 
-      
         customuser = CustomUser.objects.get(id=request.user.id)
         customuser.first_name = first_name
         customuser.last_name = last_name
-        customuser.email=email
-        
+        customuser.email = email
+
         customuser.save()
         patien = Patients.objects.get(admin=customuser.id)
-        form=PatientPicForm1(request.POST,request.FILES,instance=patien)
+        form = PatientPicForm1(request.POST, request.FILES, instance=patien)
 
         patien.address = address
         if form.is_valid():
             form.save()
         patien.save()
-       
+
         messages.success(request, "Profile Updated Successfully")
         return redirect('patient_profile')
 
-    context={
-        "patien":patien,
-        "form":form
+    context = {
+        "patien": patien,
+        "form": form
     }
-      
 
-    return render(request,'patient_templates/patient_profile.html',context)
+    return render(request, 'patient_templates/patient_profile.html', context)
 
 
-def myPrescription(request):
-    precrip=Prescription.objects.all()
+def my_prescription(request):
+    precrip = Prescription.objects.all()
 
     patient = Patients.objects.all()
 
-
-    context={
-        "prescrips":precrip,
-        "patient":patient
+    context = {
+        "prescrips": precrip,
+        "patient": patient
     }
-    return render(request,'doctor_templates/myprescription.html' ,context)
+    return render(request, 'doctor_templates/myprescription.html', context)
 
-def myPrescriptionDelete(request):
+
+def my_prescription_delete(request):
     patient_obj = Patients.objects.get(admin=request.user.id)
-    precrip=patient_obj.prescription_set.all()
+    precrip = patient_obj.prescription_set.all()
     if request.method == "POST":
         precrip.delete()
 
-
-
-
-    context={
-        "prescrips":precrip,
+    context = {
+        "prescrips": precrip,
     }
-    return render(request,'patient_templates/sure_delete.html',context)
+    return render(request, 'patient_templates/sure_delete.html', context)
+
 
 def patient_feedback(request):
     patient_fed = Patients.objects.get(admin=request.user.id)
     feedback = PatientFeedback.objects.filter(patient_id=patient_fed)
     context = {
-        "feedback":feedback
+        "feedback": feedback
     }
     return render(request, "patient_templates/patient_feedback.html", context)
 
@@ -99,15 +96,16 @@ def patient_feedback_save(request):
         feedback = request.POST.get('feedback_message')
         staff_obj = Patients.objects.get(admin=request.user.id)
 
-     
-        add_feedback =PatientFeedback(patient_id=staff_obj, feedback=feedback, feedback_reply="")
+        add_feedback = PatientFeedback(
+            patient_id=staff_obj, feedback=feedback, feedback_reply="")
         add_feedback.save()
         messages.success(request, "Feedback Sent.")
         return redirect('patient_feedback')
 
-def Patientdeletefeedback(request,pk):
+
+def patient_delete_feedback(request, pk):
     try:
-        fed=PatientFeedback.objects.get(id=pk)
+        fed = PatientFeedback.objects.get(id=pk)
         if request.method == 'POST':
             fed.delete()
             messages.success(request, "Feedback  deleted successfully")
@@ -128,19 +126,15 @@ def Patientdeletefeedback(request,pk):
             request, 'Service unavailable, Failed to Delete Feedback')
         return redirect('patient_feedback')
 
-
-   
-    return render(request,'patient_templates/sure_delete.html')
+    return render(request, 'patient_templates/sure_delete.html')
 
 
 def patient_dispense3(request):
     patient_obj = Patients.objects.get(admin=request.user.id)
 
-    patient_dispen=patient_obj.dispense_set.all()
+    patient_dispen = patient_obj.dispense_set.all()
 
-    context={
-        "dispense":patient_dispen
+    context = {
+        "dispense": patient_dispen
     }
     return render(request, "patient_templates/patient_dispense.html", context)
-
-

@@ -13,7 +13,7 @@ import requests.exceptions
 
 
 @login_required
-def pharmacistHome(request):
+def pharmacist_home(request):
     patients_total = Patients.objects.all().count()
     exipred = Stock.objects.annotate(
         expired=ExpressionWrapper(
@@ -34,7 +34,7 @@ def pharmacistHome(request):
 
 
 @login_required
-def userProfile(request):
+def user_profile(request):
     staff = Pharmacist.objects.all()
     form = CustomerForm()
     if request.method == "POST":
@@ -68,7 +68,7 @@ def userProfile(request):
     return render(request, 'pharmacist_templates/staff_profile.html', context)
 
 
-def managePatientsPharmacist(request):
+def manage_patients_pharmacist(request):
 
     patient = Patients.objects.all()
     context = {
@@ -77,7 +77,7 @@ def managePatientsPharmacist(request):
     return render(request, 'pharmacist_templates/manage_patients.html', context)
 
 
-def managePrescription(request):
+def manage_prescription(request):
     precrip = Dispense.objects.all()
 
     context = {
@@ -86,7 +86,7 @@ def managePrescription(request):
     return render(request, 'pharmacist_templates/patient_prescrip.html', context)
 
 
-def manageStock(request):
+def manage_stock(request):
     stocks = Stock.objects.all()
     stocks = Stock.objects.all().order_by("-id")
     ex = Stock.objects.annotate(
@@ -105,7 +105,7 @@ def manageStock(request):
     return render(request, 'pharmacist_templates/manage_stock.html', context)
 
 
-def manageDispense(request, pk):
+def manage_dispense(request, pk):
     queryset = Patients.objects.get(id=pk)
     prescrips = queryset.prescription_set.all()
 
@@ -238,7 +238,7 @@ def patient_feedback_message_reply(request):
         return redirect('patient_feedback_message')
 
 
-def deletefeedback(request, pk):
+def delete_feedback(request, pk):
     try:
         fed = PatientFeedback.objects.get(id=pk)
         if request.method == 'POST':
@@ -264,7 +264,7 @@ def deletefeedback(request, pk):
     return render(request, 'pharmacist_templates/sure_delete.html')
 
 
-def drugDetails(request, pk):
+def drug_details(request, pk):
     stocks = Stock.objects.get(id=pk)
     context = {
         "stocks": stocks,
@@ -274,7 +274,7 @@ def drugDetails(request, pk):
     return render(request, 'pharmacist_templates/view_drug.html', context)
 
 
-def deleteDispense4(request, pk):
+def delete_dispense4(request, pk):
     try:
         fed = Dispense.objects.get(id=pk)
         if request.method == 'POST':

@@ -18,7 +18,7 @@ from .models import Doctor
 from .models import Prescription
 
 
-def doctorHome(request):
+def doctor_home(request):
     prescip = Prescription.objects.all().count()
 
     context = {
@@ -28,7 +28,7 @@ def doctorHome(request):
     return render(request, 'doctor_templates/doctor_home.html', context)
 
 
-def doctorProfile(request):
+def doctor_profile(request):
     customuser = CustomUser.objects.get(id=request.user.id)
     staff = Doctor.objects.get(admin=customuser.id)
 
@@ -59,7 +59,7 @@ def doctorProfile(request):
     return render(request, 'doctor_templates/doctor_profile.html', context)
 
 
-def managePatients(request):
+def manage_patients(request):
     patients = Patients.objects.all()
 
     context = {
@@ -69,7 +69,7 @@ def managePatients(request):
     return render(request, 'doctor_templates/manage_patients.html', context)
 
 
-def addPrescription(request, pk):
+def add_prescription(request, pk):
     patient = Patients.objects.get(id=pk)
     form = PrescriptionForm(initial={'patient_id': patient})
     if request.method == 'POST':
@@ -99,7 +99,7 @@ def addPrescription(request, pk):
     return render(request, 'doctor_templates/prescribe_form.html', context)
 
 
-def patient_personalDetails(request, pk):
+def patient_personal_details(request, pk):
     patient = Patients.objects.get(id=pk)
     prescrip = patient.prescription_set.all()
 
@@ -111,7 +111,7 @@ def patient_personalDetails(request, pk):
     return render(request, 'doctor_templates/patient_personalRecords.html', context)
 
 
-def deletePrescription(request, pk):
+def delete_prescription(request, pk):
     prescribe = Prescription.objects.get(id=pk)
 
     if request.method == 'POST':
@@ -140,7 +140,7 @@ def deletePrescription(request, pk):
     return render(request, 'doctor_templates/sure_delete.html', context)
 
 
-def managePrescription(request):
+def manage_prescription(request):
     precrip = Prescription.objects.all()
 
     patient = Patients.objects.all()
@@ -152,7 +152,7 @@ def managePrescription(request):
     return render(request, 'doctor_templates/manage_prescription.html', context)
 
 
-def editPrescription(request, pk):
+def edit_prescription(request, pk):
     prescribe = Prescription.objects.get(id=pk)
     form = PrescriptionForm(instance=prescribe)
 

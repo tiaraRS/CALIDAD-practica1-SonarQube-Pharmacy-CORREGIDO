@@ -7,20 +7,21 @@ from .decorators import *
 
 # Create your views here.
 
-@unautheticated_user
-def loginPage(request):
-    
-    if request.method == 'POST':
-        username=request.POST.get('username')
-        password=request.POST.get('password')
 
-        user=authenticate(request,username=username,password=password)
+@unautheticated_user
+def login_page(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
         if user != None:
             login(request, user)
             user_type = user.user_type
             if user_type == '1':
                 return redirect('/')
-                
+
             elif user_type == '2':
                 return redirect('pharmacist_home')
 
@@ -30,19 +31,17 @@ def loginPage(request):
                 return redirect('clerk_home')
             elif user_type == '5':
                 return redirect('patient_home')
-                
-           
+
             else:
                 messages.error(request, "Invalid Login!")
                 return redirect('login')
         else:
             messages.error(request, "Invalid Login Credentials!")
             return redirect('login')
-    
-    return render(request,'login.html')
+
+    return render(request, 'login.html')
 
 
-
-def logoutUser(request):
+def logout_user(request):
     logout(request)
     return redirect('login')
