@@ -223,11 +223,11 @@
           bar.bind("mousedown", function(e) {
             var $doc = $(document);
             isDragg = true;
-            t = parseFloat(bar.css('top'));
-            pageY = e.pageY;
+            let t = parseFloat(bar.css('top'));
+            let pageY = e.pageY;
 
             $doc.bind("mousemove.slimscroll", function(e){
-              currTop = t + e.pageY - pageY;
+              let currTop = t + e.pageY - pageY;
               bar.css('top', currTop);
               scrollContent(0, bar.position().top, false);// scroll content
             });
