@@ -15,7 +15,7 @@
             </div>
             <div class="pull-left info">
                 <p>{{user.first_name}} {{user.last_name}}</p>
-                <a href="#"><i class="fa fa-circle text-success "></i> Online</a>
+                <a href="#"><em class="fa fa-circle text-success "></em>  Online</a>
             </div>
         </div>
 
@@ -26,7 +26,7 @@
 
                 <li class="nav-item">
                     <a href="{% url  'admin_dashboard' %}" class="nav-link">
-                        <i class="fas fa-tachometer-alt mr-2"></i>
+                        <em class="fas fa-tachometer-alt mr-2"></em> 
                         <p>
                             Dashboard
                         </p>
@@ -36,23 +36,23 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-hospital-user mr-2"></i>
+                        <em class="fas fa-hospital-user mr-2"></em> 
                         <p>
                             Patient
-                            <i class="right fas fa-angle-left"></i>
+                            <em class="right fas fa-angle-left"></em> 
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item pl-2">
                             <a href="{% url 'patient_form' %}" class="nav-link">
-                                <i class="fas fa-user-plus"></i>
+                                <em class="fas fa-user-plus"></em> 
                                 <p class="pl-2">add Patient</p>
                             </a>
                         </li>
                         <li class="nav-item pl-2">
                             <a href="{% url 'all_patients'  %}" class="nav-link">
-                                <i class="fas fa-th"></i>
+                                <em class="fas fa-th"></em> 
                                 <p class="pl-2">Manage Patient</p>
                             </a>
                         </li>
@@ -61,23 +61,23 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-address-book mr-2"></i>
+                        <em class="fas fa-address-book mr-2"></em> 
                         <p>
                             Pharmacist
-                            <i class="right fas fa-angle-left"></i>
+                            <em class="right fas fa-angle-left"></em> 
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item pl-2">
                             <a href="{% url 'add_pharmacist' %}" class="nav-link">
-                                <i class="fas fa-user-plus"></i>
+                                <em class="fas fa-user-plus"></em> 
                                 <p class="pl-2">add Pharmacist</p>
                             </a>
                         </li>
                         <li class="nav-item pl-2">
                             <a href="{% url 'manage_pharmacist'  %}" class="nav-link">
-                                <i class="fas fa-th"></i>
+                                <em class="fas fa-th"></em> 
                                 <p class="pl-2">Manage Pharmacist</p>
                             </a>
                         </li>
@@ -86,23 +86,23 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-briefcase-medical mr-2"></i>
+                        <em class="fas fa-briefcase-medical mr-2"></em> 
                         <p>
                             Doctor
-                            <i class="right fas fa-angle-left"></i>
+                            <em class="right fas fa-angle-left"></em> 
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item pl-2">
                             <a href="{% url 'add_doctor' %}" class="nav-link">
-                                <i class="fas fa-user-plus"></i>
+                                <em class="fas fa-user-plus"></em> 
                                 <p class="pl-2">add Doctor</p>
                             </a>
                         </li>
                         <li class="nav-item pl-2">
                             <a href="{% url 'manage_doctor'  %}" class="nav-link">
-                                <i class="fas fa-th"></i>
+                                <em class="fas fa-th"></em> 
                                 <p class="pl-2">Manage Doctor</p>
                             </a>
                         </li>
@@ -111,23 +111,23 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-chalkboard-teacher mr-2"></i>
+                        <em class="fas fa-chalkboard-teacher mr-2"></em> 
                         <p>
                             PharmacyClerk
-                            <i class="right fas fa-angle-left"></i>
+                            <em class="right fas fa-angle-left"></em> 
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item pl-2">
                             <a href="{% url 'add_pharmacyClerk' %}" class="nav-link">
-                                <i class="fas fa-user-plus"></i>
+                                <em class="fas fa-user-plus"></em> 
                                 <p class="pl-2">add PharmacyClerk</p>
                             </a>
                         </li>
                         <li class="nav-item pl-2">
                             <a href="{% url 'manage_pharmacyClerk'  %}" class="nav-link">
-                                <i class="fas fa-th"></i>
+                                <em class="fas fa-th"></em> 
 
                                 <p class="pl-2">Manage PharmacyClerk</p>
                             </a>
@@ -139,29 +139,29 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-layer-group mr-2"></i>
+                        <em class="fas fa-layer-group mr-2"></em> 
                         <p>
                             Stocked Drugs
-                            <i class="right fas fa-angle-left"></i>
+                            <em class="right fas fa-angle-left"></em> 
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item pl-2">
                             <a href="{% url 'add_stock' %}" class="nav-link">
-                                <i class="fas fa-capsules"></i>
+                                <em class="fas fa-capsules"></em> 
                                 <p class="pl-2">add Drug</p>
                             </a>
                         </li>
                         <li class="nav-item pl-2">
                             <a href="{% url 'add_category'  %}" class="nav-link">
-                                <i class="fas fa-pills"></i>
+                                <em class="fas fa-pills"></em> 
                                 <p class="pl-2">Add Category</p>
                             </a>
                         </li>
                         <li class="nav-item pl-2">
                             <a href="{% url 'manage_stock'  %}" class="nav-link">
-                                <i class="fas fa-th"></i>
+                                <em class="fas fa-th"></em> 
                                 <p class="pl-2">Manage Stock</p>
                             </a>
                         </li>

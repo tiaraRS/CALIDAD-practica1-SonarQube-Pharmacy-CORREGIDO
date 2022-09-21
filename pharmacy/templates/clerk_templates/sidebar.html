@@ -12,7 +12,7 @@
             </div>
             <div class="pull-left info">
                 <p>{{user.first_name}} {{user.last_name}}</p>
-                <a href="#"><i class="fa fa-circle text-success "></i> Online</a>
+                <a href="#"><em class="fa fa-circle text-success "></em> Online</a>
             </div>
         </div>
 
@@ -22,7 +22,7 @@
 
                 <li class="nav-item">
                     <a href="{% url  'clerk_home' %}" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <em class="nav-icon fas fa-tachometer-alt"></em>
                         <p>
                             Dashboard
                         </p>
@@ -30,22 +30,22 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <em class="nav-icon fas fa-th"></em>
                         <p>
                             Patient
-                            <i class="right fas fa-angle-left"></i>
+                            <em class="right fas fa-angle-left"></em>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item pl-2">
                             <a href="{% url 'patient_form2' %}" class="nav-link">
-                                <i class="fas fa-user-plus"></i>
+                                <em class="fas fa-user-plus"></em>
                                 <p class="pl-2">Add Patient</p>
                             </a>
                         </li>
                         <li class="nav-item pl-2">
                             <a href="{% url 'all_patients2' %}" class="nav-link">
-                                <i class="fas fa-th"></i>
+                                <em class="fas fa-th"></em>
                                 <p class="pl-2">Manage Patient</p>
                             </a>
                         </li>
