@@ -331,13 +331,10 @@ def manage_stock(request):
 def add_category(request):
     try:
         form = CategoryForm(request.POST or None)
-
-        if request.method == 'POST':
-            if form.is_valid():
-                form.save()
-                messages.success(request, "Category added Successfully!")
-
-                return redirect('add_category')
+        if request.method == 'POST' and form.is_valid():
+            form.save()
+            messages.success(request, "Category added Successfully!")
+            return redirect('add_category')
     except requests.exceptions.ConnectTimeout:
         messages.error(request, 'Timeout, Failed to Add Category')
         return redirect('add_category')
@@ -752,35 +749,33 @@ def edit_stock(request, pk):
     drugs = Stock.objects.get(id=pk)
     form = StockForm(request.POST or None, instance=drugs)
 
-    if request.method == "POST":
-        if form.is_valid():
-            form = StockForm(request.POST or None, instance=drugs)
+    if request.method == "POST" and form.is_valid():
+        form = StockForm(request.POST or None, instance=drugs)
+        category = request.POST.get('category')
+        drug_name = request.POST.get('drug_name')
+        quantity = request.POST.get('quantity')
 
-            category = request.POST.get('category')
-            drug_name = request.POST.get('drug_name')
-            quantity = request.POST.get('quantity')
-
-            try:
-                drugs = Stock.objects.get(id=pk)
-                drugs.drug_name = drug_name
-                drugs.quantity = quantity
-                drugs.save()
-                form.save()
-                messages.success(request, 'Stock Updated Succefully')
-            except requests.exceptions.ConnectTimeout:
-                messages.error(request, 'Timeout, Failed to Update Stock')
-                return redirect('manage_stock')
-            except requests.exceptions.ConnectionError:
-                messages.error(
-                    request, 'Connection Error, Failed to Update Stock')
-                return redirect('manage_stock')
-            except requests.exceptions.HTTPError:
-                messages.error(request, 'HTTP Error, Failed to Update Stock')
-                return redirect('manage_stock')
-            except requests.exceptions.MissingSchema:
-                messages.error(
-                    request, 'Service unavailable, Failed to Update Stock')
-                return redirect('manage_stock')
+        try:
+            drugs = Stock.objects.get(id=pk)
+            drugs.drug_name = drug_name
+            drugs.quantity = quantity
+            drugs.save()
+            form.save()
+            messages.success(request, 'Stock Updated Succefully')
+        except requests.exceptions.ConnectTimeout:
+            messages.error(request, 'Timeout, Failed to Update Stock')
+            return redirect('manage_stock')
+        except requests.exceptions.ConnectionError:
+            messages.error(
+                request, 'Connection Error, Failed to Update Stock')
+            return redirect('manage_stock')
+        except requests.exceptions.HTTPError:
+            messages.error(request, 'HTTP Error, Failed to Update Stock')
+            return redirect('manage_stock')
+        except requests.exceptions.MissingSchema:
+            messages.error(
+                request, 'Service unavailable, Failed to Update Stock')
+            return redirect('manage_stock')
     context = {
         "drugs": drugs,
         "form": form,
