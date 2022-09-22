@@ -193,7 +193,6 @@ def manage_dispense(request, pk):
     context = {
         "patients": queryset,
         "form": form,
-        # "stocks":stock,
         "drugs": drugs,
         "prescrips": prescrips,
         "expired": ex,
@@ -298,48 +297,3 @@ def delete_dispense4(request, pk):
         return redirect('pharmacist_prescription')
 
     return render(request, 'pharmacist_templates/sure_delete.html')
-
-
-# # def dispenseDrug(request,pk):
-# #     queryset=Patients.objects.get(id=pk)
-# #     form=DispenseForm(initial={'patient_id':queryset})
-# #     if request.method == 'POST':
-# #         form=DispenseForm(request.POST or None)
-# #         if form.is_valid():
-# #             form.save()
-
-
-# #     context={
-# #         # "title":' Issue' + str(queryset.item_name),
-# #         "queryset":queryset,
-# #         "form":form,
-# #         # "username":" Issue By" + str(request.user),
-# #     }
-# #     return render(request,"pharmacist_templates/dispense_drug.html",context)
-
-# # def manageDispense(request):
-# #     disp=De.objects.all()
-# #     context={
-# #         "prescrips":disp,
-# #     }
-# #     return render(request,'pharmacist_templates/manage_dispense.html',context)
-
-
-# def dispense(request,pk):
-#     queryset=Stock.objects.get(id=pk)
-#     form=DispenseForm2(request.POST or None,instance=queryset)
-#     if form.is_valid():
-#         instance=form.save(commit=False)
-#         instance.quantity-=instance.dispense_quantity
-#         print(instance.drug_id.quantity)
-#         print(instance.dispense_quantity)
-#         instance.save()
-
-#         return redirect('pharmacist_disp')
-
-
-#     context={
-#         "queryset":queryset,
-#         "form":form,
-#     }
-#     return render(request,'pharmacist_templates/dispense_form.html',context)

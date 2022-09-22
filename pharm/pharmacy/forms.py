@@ -209,33 +209,10 @@ class PatientForm7(ModelForm):
 
 
 class DispenseForm(ModelForm):
-    # gender_list = (
-
-    # )
-    # drug_id = forms.ChoiceField(label="Gender", choices=gender_list, widget=forms.Select(attrs={"class":"form-control"}))
-
     class Meta:
         model = Dispense
         fields = '__all__'
         exclude = ['stock_ref_no']
-
-    #     drug_id = forms.CharField(label="Last Name", max_length=50, widget=forms.TextInput(attrs={"class":"form-control"}))
-    # # def updateItem(self,request):
-
-    #     data=json.loads(request.body)
-    #     drugId=data['drugId']
-    #     print('ACTION:',drugId)
-    #     drug_name = forms.CharField(label="Mobile", max_length=50, widget=forms.TextInput(attrs={"value":drugId}))
-
-    # # # stock=Stock.objects.get(id=drugId)
-    # # # # drugs=Stock.objects.all()
-    # # # form=DispenseForm(request.POST or None,instance=stock,initial={'patient_id':queryset} )
-    # # # if form.is_valid():
-    # # #     instance=form.save(commit=False)
-    # # #     instance.quantity-=instance.dispense_quantity
-
-    # #     # instance.save()
-    #     return JsonResponse('jamara dd',  safe=False)
 
 
 class ReceiveStockForm(ModelForm):

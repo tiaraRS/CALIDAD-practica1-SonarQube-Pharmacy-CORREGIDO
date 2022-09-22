@@ -7262,40 +7262,6 @@
 		}
 	};
 	
-	
-	// @todo - Is there need for an augment function?
-	// _Api.augment = function ( inst, name )
-	// {
-	// 	// Find src object in the structure from the name
-	// 	var parts = name.split('.');
-	
-	// 	_Api.extend( inst, obj );
-	// };
-	
-	
-	//     [
-	//       {
-	//         name:      'data'                -- string   - Property name
-	//         val:       function () {},       -- function - Api method (or undefined if just an object
-	//         methodExt: [ ... ],              -- array    - Array of Api object definitions to extend the method result
-	//         propExt:   [ ... ]               -- array    - Array of Api object definitions to extend the property
-	//       },
-	//       {
-	//         name:     'row'
-	//         val:       {},
-	//         methodExt: [ ... ],
-	//         propExt:   [
-	//           {
-	//             name:      'data'
-	//             val:       function () {},
-	//             methodExt: [ ... ],
-	//             propExt:   [ ... ]
-	//           },
-	//           ...
-	//         ]
-	//       }
-	//     ]
-	
 	_Api.register = _api_register = function ( name, val )
 	{
 		if ( Array.isArray( name ) ) {

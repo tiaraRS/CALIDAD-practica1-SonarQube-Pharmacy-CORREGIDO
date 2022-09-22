@@ -187,8 +187,6 @@ ZeroClipboard_TableTools.Client.prototype = {
 		if ( box.width !== 0 && box.height !== 0 ) {
 			this.sized = true;
 		}
-
-		// style.backgroundColor = '#f00'; // debug
 		if ( this.domElement ) {
 			this.domElement.appendChild(this.div);
 			this.div.innerHTML = this.getHTML( box.width, box.height ).replace(/&/g, '&amp;');
@@ -385,7 +383,6 @@ ZeroClipboard_TableTools.Client.prototype = {
 
 			case 'mouseover':
 				if (this.domElement && this.cssEffects) {
-					//this.domElement.addClass('hover');
 					if (this.recoverActive) {
 						this.domElement.addClass('active');
 					}
@@ -399,7 +396,6 @@ ZeroClipboard_TableTools.Client.prototype = {
 						this.domElement.removeClass('active');
 						this.recoverActive = true;
 					}
-					//this.domElement.removeClass('hover');
 				}
 				break;
 

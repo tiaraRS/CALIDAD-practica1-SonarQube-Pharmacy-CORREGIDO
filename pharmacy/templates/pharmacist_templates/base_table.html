@@ -7,11 +7,6 @@
             <th>Category</th>
             <th>Quantiy</th>
             <th>Date Stocked</th>
-
-            <!-- <th>Mobile</th>
-
-         <th>Address</th> -->
-
         </tr>
     </thead>
     <tbody>
@@ -21,15 +16,7 @@
             <td>{{stoc.drug_name}}</td>
             <td>{{stoc.category}}</td>
             <td>{{stoc.quantity}}</td>
-
             <td>{{stoc.last_updated |date:"F d, Y"}}</td>
-
-            <!-- <td class="d-flex justify-content-center">
-                <a href="" class="btn btn-sm btn-success update-drug" data-stoc={{stoc.id}} data-stock={{stoc.drug_name}} data-action="add">Edit</a>
-                &nbsp; 
-                       
-
-                </td> -->
         </tr>
         {% endfor %}
     </tbody>

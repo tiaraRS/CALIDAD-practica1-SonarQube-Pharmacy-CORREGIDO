@@ -1015,9 +1015,6 @@ DataTable.ext.buttons.excelHtml5 = {
 		var dataStartRow, dataEndRow;
 		var getXml = function ( type ) {
 			var str = excelStrings[ type ];
-
-			//str = str.replace( /xmlns:/g, 'xmlns_' ).replace( /mc:/g, 'mc_' );
-
 			return $.parseXML( str );
 		};
 		var rels = getXml('xl/worksheets/sheet1.xml');

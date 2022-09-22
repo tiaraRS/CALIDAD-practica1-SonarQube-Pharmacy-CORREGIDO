@@ -4035,8 +4035,6 @@
    * @param {dataObject} data
    */
 
-  // Utils
-  // Methods
   var Popper = function () {
     /**
      * Creates a new Popper.js instance.

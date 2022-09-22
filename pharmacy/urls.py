@@ -1,6 +1,6 @@
 from django.urls import path
-from .import HODViews
-from .import pharmacistViews, DoctorViews, views, patient_view, clerkViews
+from . import HODViews
+from . import pharmacistViews, DoctorViews, views, patient_view, clerkViews
 from django.contrib.auth import views as auth_views
 
 

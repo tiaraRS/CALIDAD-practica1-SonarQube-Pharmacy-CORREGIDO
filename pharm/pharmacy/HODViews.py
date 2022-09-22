@@ -100,7 +100,6 @@ def all_patients(request):
         "title": "Admitted Patients"
     }
     if request.method == 'POST':
-        # admin=form['first_name'].value()
         name = request.POST.get('search')
         patients = Patients.objects.filter(first_name__icontains=name)
 
@@ -760,7 +759,6 @@ def edit_stock(request, pk):
             category = request.POST.get('category')
             drug_name = request.POST.get('drug_name')
             quantity = request.POST.get('quantity')
-            # email=request.POST.get('email')
 
             try:
                 drugs = Stock.objects.get(id=pk)
@@ -884,13 +882,9 @@ def reorder_level(request, pk):
 
 def drug_details(request, pk):
     stocks = Stock.objects.get(id=pk)
-    # prescrip=stocks.prescription_set.all()
-    # stocks=stocks.dispense_set.all()
 
     context = {
         "stocks": stocks,
-        # "prescription":prescrip,
-        # "stocks":stocks
 
     }
     return render(request, 'hod_templates/view_drug.html', context)
