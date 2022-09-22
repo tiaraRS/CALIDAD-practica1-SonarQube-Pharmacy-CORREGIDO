@@ -12,6 +12,7 @@ from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.timezone import datetime
 import requests.exceptions
+from django.views.decorators.http import require_http_methods
 
 from .forms import *
 from .models import *
@@ -48,7 +49,7 @@ def admin_dashboard(request):
     }
     return render(request, 'hod_templates/admin_dashboard.html', context)
 
-
+@require_http_methods(["POST"])
 def create_patient(request):
     form = PatientForm()
 
