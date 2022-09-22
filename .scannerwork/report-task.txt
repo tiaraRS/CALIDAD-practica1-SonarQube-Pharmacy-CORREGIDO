@@ -1,4 +1,4 @@
-projectKey=cali2
+projectKey=practica1-pharmacy-corregido
 serverUrl=http://localhost:9000
 serverVersion=9.6.1.59531
 dashboardUrl=http://localhost:9000/dashboard?id=cali2
