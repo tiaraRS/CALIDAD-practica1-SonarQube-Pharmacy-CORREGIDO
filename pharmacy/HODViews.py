@@ -140,6 +140,7 @@ def confirm_delete(request, pk):
 
 
 @login_required
+@require_http_methods(["GET","POST"])
 def create_pharmacist(request):
 
     if request.method == "POST":
