@@ -1,6 +1,13 @@
 projectKey=practica1-pharmacy-corregido
 serverUrl=http://localhost:9000
+<<<<<<< HEAD
 serverVersion=9.6.1.59531
 dashboardUrl=http://localhost:9000/dashboard?id=cali2
 ceTaskId=AYNlWvWAU2UO7ZZ1Q3LL
 ceTaskUrl=http://localhost:9000/api/ce/task?id=AYNlWvWAU2UO7ZZ1Q3LL
+=======
+serverVersion=9.4.0.54424
+dashboardUrl=http://localhost:9000/dashboard?id=practica1-pharmacy-corregido
+ceTaskId=AYNlbPZ6CehmN2_DksM6
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYNlbPZ6CehmN2_DksM6
+>>>>>>> 1844e2c (SECURITY HOTSPOT SOLVED: Using http protocol is insecure. scanner run)
