@@ -10918,15 +10918,6 @@ $.extend( Datepicker.prototype, {
 			monthNamesShort = ( settings ? settings.monthNamesShort : null ) || this._defaults.monthNamesShort,
 			monthNames = ( settings ? settings.monthNames : null ) || this._defaults.monthNames,
 
-			// Check whether a format character is doubled
-			lookAhead = function( match ) {
-				var matches = ( iFormat + 1 < format.length && format.charAt( iFormat + 1 ) === match );
-				if ( matches ) {
-					iFormat++;
-				}
-				return matches;
-			},
-
 			// Format a number, with leading zero if necessary
 			formatNumber = function( match, value, len ) {
 				var num = "" + value;
@@ -11001,16 +10992,7 @@ $.extend( Datepicker.prototype, {
 	_possibleChars: function( format ) {
 		var iFormat,
 			chars = "",
-			literal = false,
-
-			// Check whether a format character is doubled
-			lookAhead = function( match ) {
-				var matches = ( iFormat + 1 < format.length && format.charAt( iFormat + 1 ) === match );
-				if ( matches ) {
-					iFormat++;
-				}
-				return matches;
-			};
+			literal = false
 
 		for ( iFormat = 0; iFormat < format.length; iFormat++ ) {
 			if ( literal ) {
