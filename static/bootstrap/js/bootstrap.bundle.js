@@ -2205,17 +2205,17 @@
     var offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, getReferenceNode(reference));
 
     // Handle viewport case
-    if (boundariesElement === 'viewport') {
+    if (boundariesElement == 'viewport') {
       boundaries = getViewportOffsetRectRelativeToArtbitraryNode(offsetParent, fixedPosition);
     } else {
       // Handle other cases based on DOM element used as boundaries
       var boundariesNode = void 0;
-      if (boundariesElement === 'scrollParent') {
+      if (boundariesElement == 'scrollParent') {
         boundariesNode = getScrollParent(getParentNode(reference));
         if (boundariesNode.nodeName === 'BODY') {
           boundariesNode = popper.ownerDocument.documentElement;
         }
-      } else if (boundariesElement === 'window') {
+      } else if (boundariesElement == 'window') {
         boundariesNode = popper.ownerDocument.documentElement;
       } else {
         boundariesNode = boundariesElement;
