@@ -155,7 +155,7 @@ $.extend( DataTable.ext.buttons, {
 				.replace(/<select(.*?)<\/select>/g, "") // remove select tags, including options text
 				.replace(/<!\-\-.*?\-\->/g, "") // strip HTML comments
 				.replace(/<.*?>/g, "")   // strip HTML
-				.replace(/^\s+|\s+$/g,""); // trim
+				.replace(/(?:^\s+)|(?:\s+$)/g,""); // trim
 
 			return conf.columnText ?
 				conf.columnText( dt, idx, title ) :

@@ -39,7 +39,7 @@ var
 
 	// Support: Android <=4.0 only
 	// Make sure we trim BOM and NBSP
-	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+	rtrim = /(?:^[\s\uFEFF\xA0]+)|(?:[\s\uFEFF\xA0]+$)/g;
 
 jQuery.fn = jQuery.prototype = {
 

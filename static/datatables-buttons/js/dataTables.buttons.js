@@ -1484,7 +1484,7 @@ Buttons.stripData = function ( str, config ) {
 	}
 
 	if ( config.trim ) {
-		str = str.replace( /^\s+|\s+$/g, '' );
+		str = str.replace( /(?:^\s+)|(?:\s+$)/g, '' );
 	}
 
 	if ( config.stripNewlines ) {

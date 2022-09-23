@@ -48,7 +48,7 @@ def admin_dashboard(request):
     }
     return render(request, 'hod_templates/admin_dashboard.html', context)
 
-@require_http_methods(["POST"])
+@require_http_methods(["POST", "GET"])
 def create_patient(request):
     form = PatientForm()
 

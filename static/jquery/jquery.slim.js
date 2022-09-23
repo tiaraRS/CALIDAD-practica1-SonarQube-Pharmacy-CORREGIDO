@@ -8656,7 +8656,7 @@ jQuery.each(
 
 // Support: Android <=4.0 only
 // Make sure we trim BOM and NBSP
-var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+var rtrim = /(?:^[\s\uFEFF\xA0]+)|(?:[\s\uFEFF\xA0]+$)/g;
 
 // Bind a function to a context, optionally partially applying any
 // arguments.
