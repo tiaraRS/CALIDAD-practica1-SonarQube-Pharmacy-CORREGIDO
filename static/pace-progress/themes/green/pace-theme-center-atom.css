@@ -40,27 +40,17 @@
   background: #22df80;
   border-radius: 50%;
   font-family: "Helvetica Neue", sans-serif;
-  font-size: 14px;
   font-weight: 100;
   line-height: 1;
   padding: 20% 0 7px;
-  width: 50%;
-  height: 40%;
   margin: 10px 0 0 30px;
   display: block;
-  z-index: 999;
-  position: absolute;
-}
-
-.pace .pace-activity {
   font-size: 15px;
-  line-height: 1;
   z-index: 2000;
   position: absolute;
   height: 60px;
   width: 100px;
 
-  display: block;
   -webkit-animation: pace-theme-center-atom-spin 2s linear infinite;
   -moz-animation: pace-theme-center-atom-spin 2s linear infinite;
   -o-animation: pace-theme-center-atom-spin 2s linear infinite;

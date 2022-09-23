@@ -6,11 +6,6 @@ $(document).ready(function(){
       "buttons": ["excel","print"],
       "lengthMenu": [5]
     }).buttons().container().appendTo('#plist_wrapper .col-md-6:eq(0)');
-    // $('#plist').DataTable({
-    //   "lengthChange": true,
-     
-    //   "lengthMenu":[5]
-    // });
   
   });
 
@@ -22,16 +17,11 @@ $(document).ready(function(){
     allowClear: true
 });
 
-
-
-  
-
 $("#id_drug_id").select2();
 $("#id_drug_id").on("select2:open", function (e) {
   
   $('#id_drug_id').change(function(){
-        var data= $(this).val();
-        // alert(data);       
+        var data= $(this).val();     
         $("#id_taken").val(data)
          
       });
@@ -40,24 +30,13 @@ $("#id_drug_id").on("select2:open", function (e) {
          .text(drugname)
          .trigger('change');
 });
-  // $('.dataTable').paging({limit:6});
 
-
-
-
-  
   $('.theme-loader').fadeOut(500);
   $('#id_drug_id').select2({
     placeholder:" Search Dispense Drug here",
     width:"100%",
-
-
-
  })
 
-
- 
-    
 $(function() {
   $("#filter2").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -66,36 +45,4 @@ $(function() {
   });
 });
 
-
-
 })
-
-  // $(function(){
-    //     $('#id_drug_id').change(function(){
-    //     var data= $(this).val();
-    //     alert(data);       
-    //     $("#id_sto").val(data)
-         
-    //   });
-     
-    //  $('#select2-search__field')
-    //      .text(drugname)
-    //      .trigger('change');
-    
-    //   });
-
-
-    // $("#select2-search__field").on("click", function() {
-
-    //   $('#id_drug_id').change(function(){
-    //         var data= $(this).val();
-    //         alert(data);       
-    //         $("#id_sto").val(data)
-             
-    //       });
-         
-    //      $('#select2-search__field')
-    //          .text(drugname)
-    //          .trigger('change');
-    
-    //     });

@@ -59,24 +59,16 @@
   position: absolute;
   height: 60px;
   width: 100px;
-
   display: block;
   -webkit-animation: pace-theme-center-atom-spin 2s linear infinite;
   -moz-animation: pace-theme-center-atom-spin 2s linear infinite;
   -o-animation: pace-theme-center-atom-spin 2s linear infinite;
   animation: pace-theme-center-atom-spin 2s linear infinite;
-}
-
-.pace .pace-activity {
   border-radius: 50%;
   border: 5px solid #ffffff;
   content: ' ';
-  display: block;
-  position: absolute;
   top: 0;
   left: 0;
-  height: 60px;
-  width: 100px;
 }
 
 .pace .pace-activity:after {

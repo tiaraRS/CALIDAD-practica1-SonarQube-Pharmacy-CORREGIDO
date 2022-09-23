@@ -1,4 +1,6 @@
 .daterangepicker {
+  direction: ltr;
+  text-align: left;
   position: absolute;
   color: inherit;
   background-color: #fff;
@@ -355,17 +357,13 @@
     float: left;
   }
 
-  .daterangepicker {
-    direction: ltr;
-    text-align: left;
-  }
-
   .daterangepicker .drp-calendar.left {
     clear: left;
     margin-right: 0;
   }
 
   .daterangepicker .drp-calendar.left .calendar-table {
+    padding-right: 8px;
     border-right: none;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -381,10 +379,6 @@
     border-bottom-left-radius: 0;
   }
 
-  .daterangepicker .drp-calendar.left .calendar-table {
-    padding-right: 8px;
-  }
-
   .daterangepicker .ranges, .daterangepicker .drp-calendar {
     float: left;
   }
@@ -393,9 +387,6 @@
 @media (min-width: 730px) {
   .daterangepicker .ranges {
     width: auto;
-  }
-
-  .daterangepicker .ranges {
     float: left;
   }
 
