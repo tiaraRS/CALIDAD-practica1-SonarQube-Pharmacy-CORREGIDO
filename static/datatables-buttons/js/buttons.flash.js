@@ -198,8 +198,6 @@ ZeroClipboard_TableTools.Client.prototype = {
 		var style = this.div.style;
 
 		style.position = 'absolute';
-		//style.left = (this.domElement.offsetLeft)+'px';
-		//style.top = this.domElement.offsetTop+'px';
 		style.width = box.width + 'px';
 		style.height = box.height + 'px';
 

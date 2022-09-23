@@ -773,9 +773,6 @@ p {
     color: #f8f8f8!important;
 }
 
-.footable .pagination>li>a,
-.footable .pagination>li>span {}
-
 input {
     text-indent: 5px !important;
 }
@@ -837,9 +834,6 @@ input::placeholder {
     font-weight: bold;
     color: #f8f8f8!important;
 }
-
-.footable .pagination>li>a,
-.footable .pagination>li>span {}
 
 input {
     text-indent: 5px !important;
@@ -1123,8 +1117,6 @@ swal2-icon.swal2-success {
     border-color: #00b2ff !important;
     color: #00b2ff !important;
 }
-
-.swal2-popup .swal2-icon {}
 
 .swal2-icon.swal2-success {
     border-color: #a5dc86!important;

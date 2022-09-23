@@ -17729,8 +17729,10 @@ $.extend( baseEasings, {
 	Bounce: function( p ) {
 		var pow2,
 			bounce = 4;
-
-		while ( p < ( ( pow2 = Math.pow( 2, --bounce ) ) - 1 ) / 11 ) {}
+		bounce--
+		while ( p < ( ( pow2 = Math.pow( 2, bounce ) ) - 1 ) / 11 ) {
+			bounce--
+		}
 		return 1 / Math.pow( 4, 3 - bounce ) - 7.5625 * Math.pow( ( pow2 * 3 - 2 ) / 22 - p, 2 );
 	}
 } );

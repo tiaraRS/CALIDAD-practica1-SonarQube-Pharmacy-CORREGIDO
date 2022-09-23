@@ -815,10 +815,6 @@ body {
     font-weight: bold;
     color: #f8f8f8!important;
 }
-
-.footable .pagination>li>a,
-.footable .pagination>li>span {}
-
 input {
     text-indent: 5px !important;
 }
