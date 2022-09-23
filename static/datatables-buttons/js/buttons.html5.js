@@ -1114,7 +1114,7 @@ DataTable.ext.buttons.excelHtml5 = {
 						// String output - replace non standard characters for text output
 						var text = ! originalContent.replace ?
 							originalContent :
-							originalContent.replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, '');
+							originalContent.replace(/[\x7F-\x9F]/g, '');
 
 						cell = _createNode( rels, 'c', {
 							attr: {
