@@ -100,6 +100,18 @@ def create_patient(request):
     return render(request, 'hod_templates/patient_form.html', context)
 
 
+@require_http_methods(["GET"])
+def all_patients_form(request):
+    form = PatientSearchForm1(request.POST or None)
+    patients = Patients.objects.all()
+    context = {
+        "patients": patients,
+        "form": form,
+        "title": "Admitted Patients"
+    }
+    return render(request, 'hod_templates/admited_patients.html', context)
+
+@require_http_methods(["POST"])
 def all_patients(request):
     form = PatientSearchForm1(request.POST or None)
     patients = Patients.objects.all()
@@ -117,6 +129,7 @@ def all_patients(request):
             form: form
         }
     return render(request, 'hod_templates/admited_patients.html', context)
+
 
 @require_http_methods(["GET"])
 def confirm_delete_form(request, pk):
