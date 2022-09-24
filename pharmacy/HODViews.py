@@ -845,6 +845,22 @@ def edit_admin(request):
     return render(request, 'hod_templates/edit-profile.html', context)
 
 
+
+@require_http_methods(["GET"])
+def edit_stock_form(request, pk):
+    drugs = Stock.objects.get(id=pk)
+    form = StockForm(request.POST or None, instance=drugs)
+
+    context = {
+        "drugs": drugs,
+        "form": form,
+        "title": "Edit Stock"
+
+    }
+    return render(request, 'hod_templates/edit_drug.html', context)
+
+
+@require_http_methods(["POST"])
 def edit_stock(request, pk):
     drugs = Stock.objects.get(id=pk)
     form = StockForm(request.POST or None, instance=drugs)
