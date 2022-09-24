@@ -808,7 +808,21 @@ def edit_pharmacy_clerk(request, clerk_id):
     return render(request, 'hod_templates/edit_clerk.html', context)
 
 
+@require_http_methods(["GET"])
+def edit_admin_form(request):
+    customuser = CustomUser.objects.get(id=request.user.id)
+    staff = AdminHOD.objects.get(admin=customuser.id)
+    form = HodForm()
+    context = {
+        "form": form,
+        "staff": staff,
+        "user": customuser
+    }
 
+    return render(request, 'hod_templates/edit-profile.html', context)
+
+
+@require_http_methods(["POST"])
 def edit_admin(request):
     customuser = CustomUser.objects.get(id=request.user.id)
     staff = AdminHOD.objects.get(admin=customuser.id)
