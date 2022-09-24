@@ -248,7 +248,17 @@ def manage_doctor(request):
 
     return render(request, 'hod_templates/manage_doctor.html', context)
 
+@require_http_methods(["GET"])
+def create_pharmacy_clerk_form(request):
+    
+    context = {
+        "title": "Add Pharmacy Clerk"
 
+    }
+
+    return render(request, 'hod_templates/add_pharmacyClerk.html', context)
+
+@require_http_methods(["POST"])
 def create_pharmacy_clerk(request):
 
     if request.method == "POST":
@@ -284,13 +294,6 @@ def create_pharmacy_clerk(request):
             messages.error(
                 request, 'Service unavailable, Failed to Add Staff')
             return redirect('add_pharmacyClerk')
-
-    context = {
-        "title": "Add Pharmacy Clerk"
-
-    }
-
-    return render(request, 'hod_templates/add_pharmacyClerk.html', context)
 
 
 def manage_pharmacy_clerk(request):
