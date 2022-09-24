@@ -325,7 +325,17 @@ def manage_pharmacy_clerk(request):
 
     return render(request, 'hod_templates/manage_pharmacyClerk.html', context)
 
+@require_http_methods(["GET"])
+def add_stock_form(request):
+    form = StockForm(request.POST, request.FILES)
+    context = {
+        "form": form,
+        "title": "Add New Drug"
+    }
+    return render(request, 'hod_templates/add_stock.html', context)
 
+
+@require_http_methods(["POST"])
 def add_stock(request):
     form = StockForm(request.POST, request.FILES)
     if form.is_valid():

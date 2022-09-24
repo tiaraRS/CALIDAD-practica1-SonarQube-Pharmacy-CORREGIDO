@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Add a New Drug</h3>
                 </div>
-                <form method="POST" style="font-size:13px;" class='px-3 py-2' enctype="multipart/form-data">
+                <form action="post/" method="POST" style="font-size:13px;" class='px-3 py-2' enctype="multipart/form-data">
                     {% csrf_token %} {% if messages %}
                     <div class="form-group">
                         <div class="col-12">
