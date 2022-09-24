@@ -743,7 +743,20 @@ def edit_doctor(request, doctor_id):
     }
     return render(request, "hod_templates/edit_doctor.html", context)
 
+@require_http_methods(["GET"])
+def edit_pharmacy_clerk_form(request, clerk_id):
+    clerk = PharmacyClerk.objects.get(admin=clerk_id)
+    
+    context = {
+        "staff": clerk,
+        "title": "Edit PharmacyClerk"
 
+
+    }
+    return render(request, 'hod_templates/edit_clerk.html', context)
+
+
+@require_http_methods(["POST"])
 def edit_pharmacy_clerk(request, clerk_id):
     clerk = PharmacyClerk.objects.get(admin=clerk_id)
     if request.method == "POST":
@@ -793,6 +806,7 @@ def edit_pharmacy_clerk(request, clerk_id):
 
     }
     return render(request, 'hod_templates/edit_clerk.html', context)
+
 
 
 def edit_admin(request):
