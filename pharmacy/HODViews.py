@@ -190,9 +190,18 @@ def manage_pharmacist(request):
 
     return render(request, 'hod_templates/all_pharmacist.html', context)
 
+@require_http_methods(["GET"])
+def create_doctor_form(request):
 
+    context = {
+        "title": "Add Doctor"
+
+    }
+
+    return render(request, 'hod_templates/add_doctor.html', context)
+
+@require_http_methods(["POST"])
 def create_doctor(request):
-
     if request.method == "POST":
 
         username = request.POST.get('username')
@@ -226,13 +235,6 @@ def create_doctor(request):
             messages.error(
                 request, 'Service unavailable, Staff Not Added')
             return redirect('add_doctor')
-
-    context = {
-        "title": "Add Doctor"
-
-    }
-
-    return render(request, 'hod_templates/add_doctor.html', context)
 
 
 def manage_doctor(request):
