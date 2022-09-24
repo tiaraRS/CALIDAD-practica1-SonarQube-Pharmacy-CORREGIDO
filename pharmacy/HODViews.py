@@ -661,7 +661,19 @@ def delete_pharmacy_clerk(request, pk):
             request, 'Service unavailable, Failed to Delete Pharmacy Clerk')
         return redirect('manage_pharmacyClerk')
 
+@require_http_methods(["GET"])
+def edit_pharmacist_form(request, staff_id):
+    staff = Pharmacist.objects.get(admin=staff_id)
+    context = {
+        "staff": staff,
+        "id": staff_id,
+        'title': "Edit Pharmacist "
 
+    }
+    return render(request, "hod_templates/edit_pharmacist.html", context)
+
+
+@require_http_methods(["POST"])
 def edit_pharmacist(request, staff_id):
     staff = Pharmacist.objects.get(admin=staff_id)
     if request.method == "POST":
@@ -687,13 +699,6 @@ def edit_pharmacist(request, staff_id):
 
         messages.success(request, "Staff Updated Successfully.")
         return redirect('manage_pharmacist')
-    context = {
-        "staff": staff,
-        "id": staff_id,
-        'title': "Edit Pharmacist "
-
-    }
-    return render(request, "hod_templates/edit_pharmacist.html", context)
 
 
 def edit_doctor(request, doctor_id):

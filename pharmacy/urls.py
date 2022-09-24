@@ -72,7 +72,9 @@ urlpatterns = [
 
 
     path('admin_user/edit_pharmacist/<staff_id>/',
-         HODViews.edit_pharmacist, name="edit_pharmacist"),
+         HODViews.edit_pharmacist_form, name="edit_pharmacist"),
+    path('admin_user/edit_pharmacist/<staff_id>/post/',
+         HODViews.edit_pharmacist, name="edit_pharmacist_post"),
     path('admin_user/edit_doctor/<doctor_id>/',
          HODViews.edit_doctor, name="edit_doctor"),
     path('admin_user/edit_receptionist/<clerk_id>/',
