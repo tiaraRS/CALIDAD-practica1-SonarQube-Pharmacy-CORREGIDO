@@ -39,7 +39,9 @@ urlpatterns = [
     # path('add_patient_save/',HODViews.editPatientSave,name='edit_patient_save'),
 
     path('admin_user/delete_patient/<str:pk>/',
-         HODViews.confirm_delete, name='delete_patient'),
+         HODViews.confirm_delete_form, name='delete_patient'),
+    path('admin_user/delete_patient/<str:pk>/post/',
+         HODViews.confirm_delete, name='delete_patient_post'),
     path('admin_user/patient_personalRecords/<pk>/',
          HODViews.patient_personal_records, name='patient_record'),
     path('admin_user/delete_prescription/<str:pk>/',

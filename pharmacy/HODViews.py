@@ -118,13 +118,10 @@ def all_patients(request):
         }
     return render(request, 'hod_templates/admited_patients.html', context)
 
-
-def confirm_delete(request, pk):
+@require_http_methods(["GET"])
+def confirm_delete_form(request, pk):
     try:
         patient = Patients.objects.get(id=pk)
-        if request.method == 'POST':
-            patient.delete()
-            return redirect('all_patients')
     except requests.exceptions.ConnectTimeout:
         messages.error(request, 'Timeout')
         return redirect('all_patients')
@@ -146,6 +143,28 @@ def confirm_delete(request, pk):
     }
 
     return render(request, 'hod_templates/sure_delete.html', context)
+
+@require_http_methods(["POST"])
+def confirm_delete(request, pk):
+    try:
+        patient = Patients.objects.get(id=pk)
+        if request.method == 'POST':
+            patient.delete()
+            return redirect('all_patients')
+    except requests.exceptions.ConnectTimeout:
+        messages.error(request, 'Timeout')
+        return redirect('all_patients')
+    except requests.exceptions.ConnectionError:
+        messages.error(
+            request, 'Connection Error, Patient Not Deleted')
+        return redirect('all_patients')
+    except requests.exceptions.HTTPError:
+        messages.error(request, 'HTTP Error, Patient Not Deleted')
+        return redirect('all_patients')
+    except requests.exceptions.MissingSchema:
+        messages.error(
+            request, 'Service unavailable, Patient Not Deleted')
+        return redirect('all_patients')
 
 @login_required
 @require_http_methods(["POST"])
