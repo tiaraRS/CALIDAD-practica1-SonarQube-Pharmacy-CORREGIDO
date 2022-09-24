@@ -371,7 +371,32 @@ def manage_stock(request):
 
     return render(request, 'hod_templates/manage_stock.html', context)
 
+@require_http_methods(["GET"])
+def add_category_form(request):
+    try:
+        form = CategoryForm(request.POST or None)
+    except requests.exceptions.ConnectTimeout:
+        messages.error(request, 'Timeout, Failed to Add Category')
+        return redirect('add_category')
+    except requests.exceptions.ConnectionError:
+        messages.error(
+            request, 'Connection Error, Failed to Add Category')
+        return redirect('add_category')
+    except requests.exceptions.HTTPError:
+        messages.error(request, 'HTTP Error, Failed to Add Category')
+        return redirect('add_category')
+    except requests.exceptions.MissingSchema:
+        messages.error(
+            request, 'Service unavailable, Failed to Add Category')
+        return redirect('add_category')
+    context = {
+        "form": form,
+        "title": "Add a New Drug Category"
+    }
+    return render(request, 'hod_templates/add_category.html', context)
 
+
+@require_http_methods(["POST"])
 def add_category(request):
     try:
         form = CategoryForm(request.POST or None)
@@ -393,12 +418,6 @@ def add_category(request):
         messages.error(
             request, 'Service unavailable, Failed to Add Category')
         return redirect('add_category')
-
-    context = {
-        "form": form,
-        "title": "Add a New Drug Category"
-    }
-    return render(request, 'hod_templates/add_category.html', context)
 
 
 def add_prescription(request):
