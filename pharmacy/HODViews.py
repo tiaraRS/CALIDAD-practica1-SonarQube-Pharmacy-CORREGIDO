@@ -199,7 +199,7 @@ def create_pharmacist_form(request):
     }
     return render(request, 'hod_templates/pharmacist_form.html', context)
 
-
+@require_http_methods(["GET"])
 def manage_pharmacist(request):
     staffs = Pharmacist.objects.all()
     context = {
