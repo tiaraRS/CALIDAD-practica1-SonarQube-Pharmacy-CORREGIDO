@@ -573,7 +573,11 @@ def delete_doctor(request, pk):
             request, 'Service unavailable, Failed to Delete Doctor')
         return redirect('manage_doctor')
 
+@require_http_methods(["GET"])
+def delete_pharmacist_form(request, pk):
+    return render(request, 'hod_templates/sure_delete.html')
 
+@require_http_methods(["POST"])
 def delete_pharmacist(request, pk):
     try:
         pharmacist = Pharmacist.objects.get(id=pk)
@@ -597,8 +601,6 @@ def delete_pharmacist(request, pk):
         messages.error(
             request, 'Service unavailable, Failed to Delete Pharmacist')
         return redirect('manage_pharmacist')
-
-    return render(request, 'hod_templates/sure_delete.html')
 
 
 def delete_pharmacy_clerk(request, pk):
