@@ -701,6 +701,17 @@ def edit_pharmacist(request, staff_id):
         return redirect('manage_pharmacist')
 
 
+@require_http_methods(["GET"])
+def edit_doctor_form(request, doctor_id):
+    staff = Doctor.objects.get(admin=doctor_id)
+    context = {
+        "staff": staff,
+        "title": "Edit Doctor"
+    }
+    return render(request, "hod_templates/edit_doctor.html", context)
+
+
+@require_http_methods(["POST"])
 def edit_doctor(request, doctor_id):
     staff = Doctor.objects.get(admin=doctor_id)
     if request.method == "POST":
