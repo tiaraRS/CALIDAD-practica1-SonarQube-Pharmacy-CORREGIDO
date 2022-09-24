@@ -14,7 +14,9 @@ urlpatterns = [
     # path('get_user_details/', views.get_user_details, name="get_user_details"),
 
     path('admin_user/add_pharmacist/',
-         HODViews.create_pharmacist, name='add_pharmacist'),
+         HODViews.create_pharmacist_form, name='add_pharmacist'),
+     path('admin_user/add_pharmacist/post/',
+         HODViews.create_pharmacist, name='add_pharmacist_post'),
     path('admin_user/manage_pharmacist/',
          HODViews.manage_pharmacist, name='manage_pharmacist'),
     path('admin_user/add_doctor/', HODViews.create_doctor, name='add_doctor'),

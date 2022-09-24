@@ -147,13 +147,10 @@ def confirm_delete(request, pk):
 
     return render(request, 'hod_templates/sure_delete.html', context)
 
-
 @login_required
-@require_http_methods(["GET","POST"])
+@require_http_methods(["POST"])
 def create_pharmacist(request):
-
     if request.method == "POST":
-
         username = request.POST.get('username')
         email = request.POST.get('email')
         first_name = request.POST.get('first_name')
@@ -173,11 +170,14 @@ def create_pharmacist(request):
         messages.success(request, "Staff Added Successfully!")
         return redirect('add_pharmacist')
 
+
+@login_required
+@require_http_methods(["GET"])
+def create_pharmacist_form(request):
     context = {
         "title": "Add Pharmacist"
 
     }
-
     return render(request, 'hod_templates/pharmacist_form.html', context)
 
 
