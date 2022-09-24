@@ -255,7 +255,7 @@ def create_doctor(request):
                 request, 'Service unavailable, Staff Not Added')
             return redirect('add_doctor')
 
-
+@require_http_methods(["GET"])
 def manage_doctor(request):
     staffs = Doctor.objects.all()
 
@@ -314,7 +314,7 @@ def create_pharmacy_clerk(request):
                 request, 'Service unavailable, Failed to Add Staff')
             return redirect('add_pharmacyClerk')
 
-
+@require_http_methods(["GET"])
 def manage_pharmacy_clerk(request):
 
     staffs = PharmacyClerk.objects.all()
@@ -350,7 +350,7 @@ def add_stock(request):
     }
     return render(request, 'hod_templates/add_stock.html', context)
 
-
+@require_http_methods(["GET"])
 def manage_stock(request):
     stocks = Stock.objects.all().order_by("-id")
     ex = Stock.objects.annotate(
