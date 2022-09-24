@@ -66,7 +66,9 @@ urlpatterns = [
     path('admin_user/hod_profile/edit_admin_profile/',
          HODViews.edit_admin, name='edit-admin'),
     path('admin_user/delete_drug/<str:pk>/',
-         HODViews.delete_drug, name='delete_drug'),
+         HODViews.delete_drug_form, name='delete_drug'),
+    path('admin_user/delete_drug/<str:pk>/post/',
+         HODViews.delete_drug, name='delete_drug_post'),
 
 
     path('admin_user/edit_pharmacist/<staff_id>/',

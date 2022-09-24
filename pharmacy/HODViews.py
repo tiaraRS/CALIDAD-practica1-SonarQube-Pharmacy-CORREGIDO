@@ -856,6 +856,12 @@ def edit_stock(request, pk):
     return render(request, 'hod_templates/edit_drug.html', context)
 
 
+@require_http_methods(["GET"])
+def delete_drug_form(request, pk):
+    return render(request, 'hod_templates/sure_delete.html')
+
+
+@require_http_methods(["POST"])
 def delete_drug(request, pk):
     try:
 
@@ -881,8 +887,6 @@ def delete_drug(request, pk):
         messages.error(
             request, 'Service unavailable, Failed to Delete Stock')
         return redirect('manage_stock')
-
-    return render(request, 'hod_templates/sure_delete.html')
 
 
 def receive_drug(request, pk):
