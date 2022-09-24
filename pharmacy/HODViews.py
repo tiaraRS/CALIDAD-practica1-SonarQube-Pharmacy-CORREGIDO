@@ -433,6 +433,35 @@ def add_prescription(request):
     return render(request, 'hod_templates/prescribe.html', context)
 
 
+@require_http_methods(["GET"])
+def edit_patient_form(request, patient_id):
+    # adds patient id into session variable
+    request.session['patient_id'] = patient_id
+
+    patient = Patients.objects.get(admin=patient_id)
+
+    form = EditPatientForm()
+
+    # filling the form with data from the database
+    form.fields['email'].initial = patient.admin.email
+    form.fields['username'].initial = patient.admin.username
+    form.fields['first_name'].initial = patient.first_name
+    form.fields['last_name'].initial = patient.last_name
+    form.fields['address'].initial = patient.address
+    form.fields['gender'].initial = patient.gender
+    form.fields['phone_number'].initial = patient.phone_number
+    form.fields['dob'].initial = patient.dob
+    
+    context = {
+        "id": patient_id,
+        # "username": patient.admin.username,
+        "form": form,
+        "title": "Edit Patient"
+    }
+    return render(request, "hod_templates/edit_patient.html", context)
+
+
+@require_http_methods(["POST"])
 def edit_patient(request, patient_id):
     # adds patient id into session variable
     request.session['patient_id'] = patient_id

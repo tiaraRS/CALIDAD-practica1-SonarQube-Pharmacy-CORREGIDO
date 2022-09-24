@@ -37,7 +37,9 @@ urlpatterns = [
     path('admin_user/prescribe_drug/',
          HODViews.add_prescription, name='prescribe'),
     path('admin_user/edit_patient/<patient_id>/',
-         HODViews.edit_patient, name='edit_patient'),
+         HODViews.edit_patient_form, name='edit_patient'),
+    path('admin_user/edit_patient/<patient_id>/post/',
+         HODViews.edit_patient, name='edit_patient_post'),
     # path('add_patient_save/',HODViews.editPatientSave,name='edit_patient_save'),
 
     path('admin_user/delete_patient/<str:pk>/',
