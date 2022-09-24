@@ -16,7 +16,7 @@ from django.views.decorators.http import require_http_methods
 from .forms import *
 from .models import *
 
-
+@require_http_methods(["GET"])
 def admin_dashboard(request):
     patients_total = Patients.objects.all().count()
 
