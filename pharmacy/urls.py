@@ -6,7 +6,8 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', HODViews.admin_dashboard, name='admin_dashboard'),
-    path('admin_user/patient_form/', HODViews.create_patient, name='patient_form'),
+    path('admin_user/patient_form/', HODViews.create_patient_form, name='patient_form'),
+    path('admin_user/patient_form/post/', HODViews.create_patient, name='patient_form_post'),
     path('admin_user/all_patients/', HODViews.all_patients, name='all_patients'),
     path('login/', views.login_page, name='login'),
     path('logout/', views.logout_user, name='logout'),
