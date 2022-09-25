@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ui1u$88tg97g-()a(^hcv5mn#jzcu^3yb1n=!s7kn-!t25932n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'pharmacy-management-system2.herokuapp.com',

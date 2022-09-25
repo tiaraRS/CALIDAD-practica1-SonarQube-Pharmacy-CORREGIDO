@@ -1,6 +1,6 @@
-projectKey=cali2
+projectKey=practica1-pharmacy-corregido
 serverUrl=http://localhost:9000
-serverVersion=9.6.1.59531
-dashboardUrl=http://localhost:9000/dashboard?id=cali2
-ceTaskId=AYN094hecsL1lb_4ex_C
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYN094hecsL1lb_4ex_C
+serverVersion=9.4.0.54424
+dashboardUrl=http://localhost:9000/dashboard?id=practica1-pharmacy-corregido
+ceTaskId=AYN1eCcvbOFHHYe9U3dl
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYN1eCcvbOFHHYe9U3dl
