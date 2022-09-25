@@ -63,7 +63,7 @@ MIDDLEWARE = [
 
 ]
 
-ROOT_URLCONF = 'pharm.urls'
+ROOT_URLCONF = 'pharmacy.urls'
 
 TEMPLATES = [
     {
@@ -81,7 +81,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pharm.wsgi.application'
+WSGI_APPLICATION = 'pharmacy.wsgi.application'
 
 
 # Database
